@@ -1,6 +1,6 @@
-## Postgres
+# Postgres
 
-### User roles
+## Users
 
 Switch to postgres account
 
@@ -15,7 +15,7 @@ Exit
 ``` \q ```
 
 
-#### Create new role
+### Create new role
 
 When logged in as postgres account create new user
 
@@ -32,7 +32,7 @@ for example
 ``` GRANT ALL PRIVILEGES ON DATABASE dbname TO username; ```
 
 
-### Creating a database
+## Database
 
 * user is the name of the user you want to own the database.
 * dbname is the name of the database you want to create
