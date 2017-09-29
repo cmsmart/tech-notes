@@ -1,6 +1,6 @@
 # Ruby
 
-## Run a ruby termimal
+## Run a ruby terminal
 
 ``` ruby -run -e httpd . -p 8000 ```
 
