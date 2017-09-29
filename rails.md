@@ -39,5 +39,4 @@ Adding new gems
 ### Index
 A database index is a data structure that improves the speed of operations in a table. Indexes can be created using one or more columns, providing the basis for both rapid random lookups and efficient ordering of access to records.
 
-eg add_index :relationships, :follower_id
-    add_index ()
+eg add_index :page, :some_id
