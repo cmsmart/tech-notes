@@ -11,3 +11,5 @@ Snippets 'n such.
 * [Ruby on Rails](rails.md)
 
 * [VSCode](vscode.md)
+
+* [Ubuntu](ubuntu.md)
