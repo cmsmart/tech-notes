@@ -4,12 +4,17 @@ Snippets 'n such.
 
 # INDEX
 
+* [Git](git.md)
+
 * [PostGres](postgres.md)
 
 * [Ruby](ruby.md)
 
-* [Ruby on Rails](rails.md)
+* [Ruby on Rails](rails/rails.md)
+
+* [Ubuntu](ubuntu.md)
 
 * [VSCode](vscode.md)
 
-* [Ubuntu](ubuntu.md)
+
+
