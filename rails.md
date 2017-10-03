@@ -40,3 +40,7 @@ Adding new gems
 A database index is a data structure that improves the speed of operations in a table. Indexes can be created using one or more columns, providing the basis for both rapid random lookups and efficient ordering of access to records.
 
 eg add_index :page, :some_id
+
+### Log in to rails database
+
+``` rails db ```
