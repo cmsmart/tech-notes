@@ -1,5 +1,8 @@
 # Postgres
 
+### Restart server
+``` sudo /etc/init.d/postgresql restart ```
+
 ## View things
 
 #### Show all users 
@@ -22,6 +25,16 @@ Access postgres prompt
 Exit 
 
 ``` \q ```
+
+
+### Change the postgres user’s Linux password
+```sudo passwd postgres```
+
+```su - postgres```
+```psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword';"```
+
+* Note that this user is distinct from the postgres Linux user. 
+
 
 
 ### Create new role

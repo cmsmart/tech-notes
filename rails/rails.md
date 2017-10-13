@@ -44,3 +44,26 @@ eg add_index :page, :some_id
 ### Log in to rails database
 
 ``` rails db ```
+
+
+## Postgres
+
+``` rails new myapp --database=postgresql```
+
+### Check what database is being used in rails console
+
+``` ActiveRecord::Base.connection.current_database ```
+
+### Add  database user details to config/database.yml (if user has a password)
+
+  host: localhost
+  username: pguser
+  password: pguser_password
+
+
+### Create your databases
+```rake db:create```
+
+### To restart postgresql
+
+``` sudo /etc/init.d/postgresql restart ```
