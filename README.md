@@ -10,7 +10,7 @@ Snippets 'n such.
 
 * [Ruby](ruby.md)
 
-* [Ruby on Rails](rails/rails.md)
+* [Ruby on Rails](rails)
 
 * [Ubuntu](ubuntu.md)
 
