@@ -44,3 +44,36 @@ class ExampleController < ApplicatioController
     layout 'admin'
 
 ```
+## Stylesheets structure
+
+app/assets/stylesheets/application.css
+```
+/*
+    *= require_self
+    *= require main
+*/
+```
+
+e.g. app/assets/stylesheets/main.scss
+
+```
+@import "bootstrap";
+@import "variables.scss"
+
+```
+
+Example directory structure
+```
+Directory structure:
++--- assets/
+|   +--- stylesheets/
+|       +--- /application.css
+|       +--- /main.scss
+|           +--- base/
+|               +--- /mixins.scss
+|               +--- /globals.scss
+|               +--- /normalize.scss
+|           +--- styles/
+|               +--- /posts.scss
+|               +--- /home.scss
+```
