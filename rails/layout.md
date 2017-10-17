@@ -34,6 +34,7 @@ at top of page set value of variable (for example, this the title of the content
 e.g.
 
 #### Create new layout
+
 Create a new file under views/layouts by copying  application.html.erb and call it admin.html.erb
 
 #### Add to controller
