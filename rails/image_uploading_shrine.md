@@ -121,6 +121,7 @@ end
 ```
 
 ## Style fields to use image 
+```
 
   <% if @profile.image.present? %>
     <figure>
@@ -129,6 +130,8 @@ end
   <% else %>
     <p>No image</p>
   <% end %>
+
+  ```
 
 
   ## Resources

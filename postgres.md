@@ -50,7 +50,13 @@ When logged in as postgres account create new user
 
 ### Change user password
 
+``` alter role postgres password 'password'; ```
+
+or set as empty ? - need to verify one of these
+
 ``` alter role postgres password null; ```
+
+``` alter role postgres password ''; ```
 
 ### Add an existing user to a database
 
@@ -65,6 +71,7 @@ for example
 * but need to explicity drop any privileges associated with that user, also to move its ownership to other role
 
 ``` REASSIGN OWNED BY <olduser> TO <newuser> ```
+
 ``` DROP OWNED BY <olduser> ```
 
 ``` DROP USER <user> ```
