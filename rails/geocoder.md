@@ -35,6 +35,13 @@ geocoded_by :full_address
 
 ```
 
+* Also if you have latitude and longitude fields with different names you can override the correspondning settings 
+
+e.g.
+
+```geocoded_by :address, latitude: :lat, longitude: :lon```
+
+
 ## Set up API
 * Note that Google Static Maps API must be enabled when creating your API key in Google Developer
 
@@ -55,3 +62,7 @@ and add Google API key (using .env file)
 ```
 <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",class: 'img-fluid img-rounded', alt: "#{@event.service} on the map"%>
 ```
+
+
+## Resources
+[Geocoder: Display Maps and Find Places in Rails](https://www.sitepoint.com/geocoder-display-maps-and-find-places-in-rails/)

@@ -117,3 +117,10 @@ end
   <% else %>
     <p>No image</p>
   <% end %>
+
+
+  ## Resources
+
+  [Uploading Files With Rails and Shrine](https://code.tutsplus.com/tutorials/uploading-files-with-rails-and-shrine--cms-27596)
+
+  [Rails File Uploading You Can Believe in with Shrine](https://www.sitepoint.com/rails-file-uploading-you-can-believe-in-with-shrine/)
