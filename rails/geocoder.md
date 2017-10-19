@@ -35,7 +35,7 @@ geocoded_by :full_address
 
 ```
 
-* Also if you have latitude and longitude fields with different names you can override the correspondning settings 
+* Also if you have latitude and longitude fields with different names you can override the corresponding settings 
 
 e.g.
 
@@ -55,12 +55,12 @@ Uncomment
 :ip_lookup => :freegeoip # for IP addresses
 ```
 and add Google API key (using .env file)
-
+```   api_key:  ENV.fetch("GOOGLE_API")  # API key for geocoding service ```
 
 ## Add tag to display static map on show view
 
 ```
-<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",class: 'img-fluid img-rounded', alt: "#{@event.service} on the map"%>
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",class: 'img-fluid img-rounded', alt: "#{@event.name} on the map"%>
 ```
 
 

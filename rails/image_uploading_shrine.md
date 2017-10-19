@@ -27,6 +27,8 @@ image field should be of type text and have suffix _data
 
 ## Set up a file system for storage and set variables in .env file
 
+### Set up config/initializers/shrine.rb and add: 
+
 ```
 require "shrine"
 require "shrine/storage/file_system"
@@ -47,7 +49,7 @@ Shrine.storages = {
 ### IMPORTANT 
 * Add keys to .env file and add .env to .gitignore
 
-* Add public/uploads to .gitignore
+* Also can add public/uploads to .gitignore
 
 ### Create a new file in your model folder. 
 * call it image_uploader.rb
@@ -83,6 +85,16 @@ class ImageUploader < Shrine
   end
   ```
 
+  ## Include class inside relevant model
+
+  e.g.
+
+  ```
+  class Profile < ApplicationRecord
+    include ImageUploader[:image_name]
+  end
+```
+
   ## Add fields to relevant form
 
   e.g.
@@ -104,7 +116,7 @@ e.g.
 
 ```
   def profile_params
-      params.require(:profile).permit(:name, :description :remove_image)
+      params.require(:profile).permit(:name, :description, :profile_image, :remove_image)
 end
 ```
 
