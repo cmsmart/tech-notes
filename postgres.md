@@ -48,6 +48,9 @@ When logged in as postgres account create new user
 -s = superuser, 
 -e = echo
 
+### Change user password
+
+``` alter role postgres password null; ```
 
 ### Add an existing user to a database
 
@@ -63,6 +66,8 @@ for example
 
 ``` REASSIGN OWNED BY <olduser> TO <newuser> ```
 ``` DROP OWNED BY <olduser> ```
+
+``` DROP USER <user> ```
 
 ## Database Users
 

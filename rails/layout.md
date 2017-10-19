@@ -29,6 +29,21 @@ at top of page set value of variable (for example, this the title of the content
 ```<% @page_title = @book.title %>```
 
 
+### Create new yield areas in templates 
+
+``` <%= yield :header %> ```
+
+and then use in pages like:
+
+```
+    <% content_for :header do %>
+        <p>Content</p>
+    <% end %>
+```     
+
+
+
+
 ## Create new layouts and use on different pages
 
 e.g.
