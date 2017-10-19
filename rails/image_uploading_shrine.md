@@ -1,0 +1,119 @@
+# Image uploading with Shrine
+
+## Creating image fields
+
+image field should be of type text and have suffix _data
+
+ eg
+
+ ``` t.text :profile_photo_data```
+
+## Add gems
+ 
+  ### Shrine
+  ```gem "shrine"```
+  ### AWS for storing images
+  ```gem 'aws-sdk', '~> 3'```
+
+  ### Shrine Dependencies
+  ```gem 'fastimage'```
+
+  ```gem 'image_processing'```
+
+  ```gem 'mini_magick'```         
+
+  ```gem 'shrine'```
+
+
+## Set up a file system for storage and set variables in .env file
+
+```
+require "shrine"
+require "shrine/storage/file_system"
+ 
+s3_options = {
+  access_key_id:     ENV.fetch("S3_ACCESS_KEY_ID"),
+  secret_access_key: ENV.fetch("S3_SECRET_ACCESS_KEY"),
+  region:            ENV.fetch("S3_REGION"),
+  bucket:            ENV.fetch("S3_BUCKET"),
+}
+ 
+Shrine.storages = {
+  cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
+  store: Shrine::Storage::FileSystem.new("public", prefix: "uploads/store"),
+}
+```
+
+### IMPORTANT 
+* Add keys to .env file and add .env to .gitignore
+
+* Add public/uploads to .gitignore
+
+### Create a new file in your model folder. 
+* call it image_uploader.rb
+* Set validation and optional image size alternatives
+
+and add 
+```
+class ImageUploader < Shrine
+    include ImageProcessing::MiniMagick
+  
+    plugin :activerecord
+    plugin :determine_mime_type
+    plugin :logging, logger: Rails.logger
+    plugin :remove_attachment
+    plugin :store_dimensions
+    plugin :validation_helpers
+    plugin :versions, names: [:original, :large, :medium, :thumb]
+  
+    Attacher.validate do
+      validate_max_size 2.megabytes, message: 'is too large (max is 2 MB)'
+      validate_mime_type_inclusion ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
+    end
+  
+    def process(io, context)
+      case context[:phase]
+      when :store
+        size_500 = resize_to_limit(size_700, 500, 500)
+        size_300 = resize_to_limit(size_500, 300, 300)
+        thumb = resize_to_limit!(io.download, 200, 200)
+        { original: io, large: size_700, medium: size_500, thumb: thumb }
+      end
+    end
+  end
+  ```
+
+  ## Add fields to relevant form
+
+  e.g.
+
+```
+<div class="field">
+    <%= form.label : image %>
+    <%= form.file_field :image, id: :profile_image %>
+</div>
+
+ <div class="field">
+    Remove attachment: <%= form.check_box :remove_image %>
+</div>
+```
+
+## Add to controller params (remove)
+
+e.g.
+
+```
+  def profile_params
+      params.require(:profile).permit(:name, :description :remove_image)
+end
+```
+
+## Style fields to use image 
+
+  <% if @profile.image.present? %>
+    <figure>
+    <%= image_tag @profile.image_url(:thumb), alt: " #{@profile.name}" %>
+    </figure>
+  <% else %>
+    <p>No image</p>
+  <% end %>

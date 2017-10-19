@@ -41,9 +41,6 @@ and then use in pages like:
     <% end %>
 ```     
 
-
-
-
 ## Create new layouts and use on different pages
 
 e.g.
