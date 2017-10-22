@@ -1,4 +1,4 @@
-# Goecoder with static map 
+# Geocoder with static map 
 
 Example called 'Events'
 
