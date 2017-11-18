@@ -1,0 +1,21 @@
+
+``` rails g devise User```
+
+add sign in links to application.thml
+
+
+<div id="user_nav">
+    <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <% else %>
+        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
+</div>
+
+
+
+create a profile
+
+
+rails g scaffold Profile first_name last_name user:references avatar_data:text
+

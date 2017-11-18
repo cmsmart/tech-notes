@@ -13,7 +13,12 @@
 
 ``` rails db:migrate```
 
+## join table
 
+``` rails g migration create_join_table :products, :categories, table_name: :categorization ```
+or
+
+```rails g migration CreateJoinTableCategoryProduct category product```
 
 ## update attributes
 

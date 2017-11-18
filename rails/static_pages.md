@@ -10,6 +10,6 @@ and set the routes in routes.rb
 
 e.g.
 
-```  root 'static_pages#home' ```
+```  root 'static#home' ```
 
 ``` get '/about', to: 'static#about' ```

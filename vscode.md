@@ -9,3 +9,14 @@
 * ! +tab creates a new html doc layout
 
 * link:css +tab creates a new css stylesheet link
+
+### Emmet
+
+script shortcut
+
+```script:src ```
+
+
+doctype
+
+``` ! ```

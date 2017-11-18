@@ -22,27 +22,26 @@ image field should be of type text and have suffix _data
 
   ```gem 'mini_magick'```         
 
-  ```gem 'shrine'```
 
 
 ## Set up a file system for storage and set variables in .env file
 
-### Set up config/initializers/shrine.rb and add: 
+### Set up config/initializers/shrine.rb and add options for AWS3: 
 
 ```
 require "shrine"
-require "shrine/storage/file_system"
- 
+require "shrine/storage/s3"
+
 s3_options = {
   access_key_id:     ENV.fetch("S3_ACCESS_KEY_ID"),
   secret_access_key: ENV.fetch("S3_SECRET_ACCESS_KEY"),
   region:            ENV.fetch("S3_REGION"),
   bucket:            ENV.fetch("S3_BUCKET"),
 }
- 
+
 Shrine.storages = {
-  cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
-  store: Shrine::Storage::FileSystem.new("public", prefix: "uploads/store"),
+  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+  store: Shrine::Storage::S3.new(prefix: "store", **s3_options),
 }
 ```
 
@@ -66,7 +65,7 @@ class ImageUploader < Shrine
     plugin :remove_attachment
     plugin :store_dimensions
     plugin :validation_helpers
-    plugin :versions, names: [:original, :large, :medium, :thumb]
+    plugin :versions, names: [:original, :thumb]
   
     Attacher.validate do
       validate_max_size 2.megabytes, message: 'is too large (max is 2 MB)'
@@ -76,8 +75,6 @@ class ImageUploader < Shrine
     def process(io, context)
       case context[:phase]
       when :store
-        size_500 = resize_to_limit(size_700, 500, 500)
-        size_300 = resize_to_limit(size_500, 300, 300)
         thumb = resize_to_limit!(io.download, 200, 200)
         { original: io, large: size_700, medium: size_500, thumb: thumb }
       end
@@ -105,7 +102,7 @@ class ImageUploader < Shrine
     <%= form.file_field :image, id: :profile_image %>
 </div>
 
- <div class="field">
+<div class="field">
     Remove attachment: <%= form.check_box :remove_image %>
 </div>
 ```
