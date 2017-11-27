@@ -4,7 +4,7 @@
 
 e.g.
 
-```resources :newpath, controller: 'oldpath'```
+```resources :newpath, controller: 'oldpath' ```
 
 ## Static page routes
 

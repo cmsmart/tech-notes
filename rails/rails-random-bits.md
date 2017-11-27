@@ -28,27 +28,6 @@ or
 
 
 
-## MailGun
-
-add     
-
-``` gem 'mailgun-ruby', '~>1.1.6'```
-
-see gem docs.
-add to config/development.rb and change info on environment variables (note the .fetch method from ruby docs which ensures the key is present)
-
-```
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV.fetch('MAILGUN_API_KEY'),
-    domain: ENV.fetch('MAILGUN_DOMAIN'),
-  }
-```
-
-add dotenv gem and set environment variables in .env file in root. also add .env to .gitignore.
-
-other config actions ...
-
 
 ## Creating foreign keys
 
