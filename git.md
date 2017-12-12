@@ -5,3 +5,7 @@
 ## Pull down a specific branch
 
 ```git fetch <remote_repo> <remotebranch>:<localbranch>```
+
+## View all branches
+``` git branch -a ```
+

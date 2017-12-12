@@ -47,7 +47,7 @@ or add scripts to package json (node dev is naming convention server)
 
 ``` yarn add mongoose```
 
-```sudo service mondod start```
+```sudo service mongod start```
 
 
   API

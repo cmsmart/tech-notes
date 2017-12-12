@@ -6,8 +6,7 @@
 
 * We’ve lost () around the argument list when there’s just one argument (rest arguments are an exception, eg (...args) => ...)
 
-* We’ve lost the return keyword because when omitting {}, single line arrow functions perform an implicit return (these functions are often referred to as lambda functions in other languages). 
-Implicit return only happens for single statement arrow functions. When arrow function is declared with {}, even if it’s a single statement, implicit return does not happen
+* We’ve lost the return keyword because when omitting {}, single line arrow functions perform an implicit return (these functions are often referred to as lambda functions in other languages). Implicit return only happens for single statement arrow functions. When arrow function is declared with {}, even if it’s a single statement, implicit return does not happen
 
 
 
