@@ -26,3 +26,24 @@
 ### Switch branches
 
 ``` git checkout <branchname> ```
+
+### Show remote branches
+
+``` git remote show origin ```
+
+### Checkout remote branch
+
+``` git checkout --track origin/remote_branch ```
+
+which is the same as 
+
+``` git checkout --track -b [branch] [remotename]/[branch] ```
+
+### View diff
+
+``` git diff origin/master..HEAD ```
+
+### Checkout a new remote branch that doesn't exist on local
+
+``` git fetch origin ```
+``` git checkout --track origin/<remote_branch_name> ```
