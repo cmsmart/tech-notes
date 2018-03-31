@@ -47,3 +47,7 @@ which is the same as
 
 ``` git fetch origin ```
 ``` git checkout --track origin/<remote_branch_name> ```
+
+### To remove a local branch 
+
+```git branch -d the_local_branch```
