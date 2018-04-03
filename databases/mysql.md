@@ -11,7 +11,7 @@
 
 ### Show databases
 
-``` mysqlshow -p ```
+``` mysqlshow -u user -p ```
 
 ### Create a database
 
@@ -19,30 +19,38 @@
 
 ### Delete a database
 
-``` mysqladmin -u root -p drop databasename ```
+``` mysqladmin -u user -p drop databasename ```
 
 ### Log in to MySQL
 
-``` mysql -u DBuser -h DBservername(eg localhost) -p ```
+``` mysql -u user -p ```
+
+``` mysql -u user -h DBservername(eg localhost) -p ```
 
 ### Get a list of MySQL users and hosts
 
-```mysql > select user,host from mysql.user; ```
+```mysql > SELECT user,host FROM mysql.user; ```
 
 ### Find user privileges
 
-``` mysql > show grants for 'user'@'host'; ```
+``` mysql > SHOW GRANTS FOR 'user'@'host'; ```
 
 ### Create a user
 
-``` mysql > grant all on *.* to 'user'@'host' identified by 'password'; ```
+``` CREATE USER 'user'@'localhost' IDENTIFIED BY 'password'; ```
+
+### Grant privileges
+
+``` mysql > GRANT ALL ON *.* TO 'user'@'host' IDENTIFIED BY 'password'; ```
+
+``` GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost'; ```
 
 ### Revoke user privileges
 
-``` mysql > revoke all on *.* from 'user'@'host'; ```
+``` mysql > REVOKE ALL ON *.* FROM 'user'@'host'; ```
 
 ### Show tables in a db
 
-``` use databasename; ```
+``` USE databasename; ```
 
-``` show tables; ```
+``` SHOW TABLES; ```
